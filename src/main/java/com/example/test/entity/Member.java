@@ -32,7 +32,7 @@ public class Member {
     private List<Board> board = new ArrayList<>();
 
     @Builder
-    public Member(String name, String password, String email, String contact) {
+    public Member(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
