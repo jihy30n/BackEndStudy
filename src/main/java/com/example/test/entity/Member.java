@@ -28,9 +28,6 @@ public class Member {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @Column(length = 20, nullable = false)
-    private String contact;
-
     @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Board> board = new ArrayList<>();
 
@@ -39,7 +36,6 @@ public class Member {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.contact = contact;
     }
 
 }

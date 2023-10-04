@@ -26,7 +26,6 @@ public class BoardService {
     @Transactional
     public Long update(Long id, BoardUpdateRequestDto requestDto) {
         Board board = boardRepository.findById(id)
-                //뭔지 좀 찾아보기
                 .orElseThrow(() -> new
                         IllegalArgumentException("게시글이 존재하지 않음."));
 
