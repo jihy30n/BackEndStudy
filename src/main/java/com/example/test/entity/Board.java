@@ -17,7 +17,7 @@ public class Board {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Member.class)
-    @JoinColumn(name = "member_id", updatable = false)
+    @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     private Member member;
 
     @Column(nullable = false)
