@@ -13,7 +13,7 @@ public class BoardCreateRequestDto {
     private String title;
     private String content;
 
-    @Builder
+
     public BoardCreateRequestDto(Member member, String title, String content) {
         this.member = member;
         this.title = title;

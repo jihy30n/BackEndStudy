@@ -28,7 +28,8 @@ public class Member {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "member")
+
     private List<Board> board = new ArrayList<>();
 
     @Builder
