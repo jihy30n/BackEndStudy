@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "board")
-//클래스단에 적기!!
+
 @Builder
 @AllArgsConstructor
 public class Board {
-    //필드
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
