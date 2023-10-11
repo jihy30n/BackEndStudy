@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
-
     @PostMapping
     public Long create(@RequestBody BoardCreateRequestDto requestDto) {
         return boardService.create(requestDto);
