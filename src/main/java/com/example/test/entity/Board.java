@@ -20,8 +20,9 @@ public class Board {
     @Column(name = "board_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "member_id")
+
     private Member member;
 
     @Column(nullable = false)

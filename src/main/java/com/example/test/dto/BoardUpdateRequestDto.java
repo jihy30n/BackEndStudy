@@ -10,7 +10,6 @@ public class BoardUpdateRequestDto {
     private String title;
     private String content;
 
-    @Builder
     public BoardUpdateRequestDto(String title, String content) {
         this.title = title;
         this.content = content;
