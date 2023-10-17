@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RequiredArgsConstructor
 @RestControllerAdvice
 public class ErrorExceptionHandler{
-    @ExceptionHandler({BadRequestException.class})//400
+    @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final BadRequestException e){
         return ResponseEntity
                 .status(e.getErrorCode().getStatus())
@@ -25,8 +25,8 @@ public class ErrorExceptionHandler{
 
 
 
-    //business duplicate, 넣어야함
-    @ExceptionHandler({ForbiddenException.class})//403
+
+    @ExceptionHandler({ForbiddenException.class})
     public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final ForbiddenException e){
         return ResponseEntity
                 .status(e.getErrorCode().getStatus())
@@ -37,7 +37,7 @@ public class ErrorExceptionHandler{
     }
 
 
-    @ExceptionHandler({NotFoundException.class}) //404
+    @ExceptionHandler({NotFoundException.class})
     public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final NotFoundException e){
         return ResponseEntity
                 .status(e.getErrorCode().getStatus())
@@ -47,7 +47,7 @@ public class ErrorExceptionHandler{
                         .build());
     }
 
-    @ExceptionHandler({UnAuthorizedException.class})//401
+    @ExceptionHandler({UnAuthorizedException.class})
     public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final UnAuthorizedException e){
         return ResponseEntity
                 .status(e.getErrorCode().getStatus())
