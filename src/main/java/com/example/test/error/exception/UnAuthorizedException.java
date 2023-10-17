@@ -4,8 +4,8 @@ import com.example.test.error.ErrorCode;
 
 public class UnAuthorizedException extends BusinessException {
 
-    public UnAuthorizedException(String errorMessage, ErrorCode errorCode) {
+    public UnAuthorizedException(ErrorCode errorCode, String errorMessage) {
 
-        super(errorMessage, errorCode);
+        super(errorCode, errorMessage);
     }
 }

@@ -1,9 +1,6 @@
 package com.example.test.error;
 
-import com.example.test.error.exception.BadRequestException;
-import com.example.test.error.exception.ForbiddenException;
-import com.example.test.error.exception.NotFoundException;
-import com.example.test.error.exception.UnAuthorizedException;
+import com.example.test.error.exception.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +20,15 @@ public class ErrorExceptionHandler{
                         .build());
     }
 
-
+    @ExceptionHandler({InternalServerException.class})
+    public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final InternalServerException e) {
+        return ResponseEntity
+                .status(e.getErrorCode().getStatus())
+                .body(ErrorEntity.builder()
+                        .errorCode(e.getErrorCode().getCode())
+                        .errorMessage(e.getErrorCode().getMessage())
+                        .build());
+    }
 
 
     @ExceptionHandler({ForbiddenException.class})

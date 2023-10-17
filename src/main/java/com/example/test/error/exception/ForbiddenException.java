@@ -4,8 +4,8 @@ import com.example.test.error.ErrorCode;
 
 public class ForbiddenException extends BusinessException {
 
-    public ForbiddenException(String errorMessage, ErrorCode errorCode) {
+    public ForbiddenException(ErrorCode errorCode, String errorMessage) {
 
-        super(errorMessage, errorCode);
+        super(errorCode, errorMessage);
     }
 }
