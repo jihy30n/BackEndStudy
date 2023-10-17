@@ -16,9 +16,9 @@ public enum ErrorCode {
     NOT_EXIST_POST(HttpStatus.NOT_FOUND, "404", "404 Not found: 존재하지 않는 게시글입니다."),
     INTERNAL_SERVER_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "500", "500: 예기치 못한 오류가 발생했습니다.");
 
-    private final HttpStatus status;
-    private final String code;
-    private final String message;
+    private HttpStatus status;
+    private String code;
+    private String message;
 
     ErrorCode(HttpStatus status, String code, String message) {
         this.status = status;
