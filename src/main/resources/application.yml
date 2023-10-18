@@ -6,6 +6,8 @@ server:
 spring:
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create
   datasource:
     url: jdbc:mysql://localhost:3306/boardtest?serverTimezone=UTC&characterEncoding=UTF-8
     username : root

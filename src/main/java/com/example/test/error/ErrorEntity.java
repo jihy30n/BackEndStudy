@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Getter
 public class ErrorEntity {
-    private String errorCode;
-    private String errorMessage;
+    private final String errorCode;
+    private final String errorMessage;
 
     @Builder
     public ErrorEntity(String errorCode, String errorMessage) {

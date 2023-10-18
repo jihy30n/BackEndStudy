@@ -17,12 +17,11 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_id")
+    @Column
     private Long id;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "member_id")
-
     private Member member;
 
     @Column(nullable = false)

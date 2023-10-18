@@ -16,7 +16,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private Long id;
 
     @Column(length = 15, nullable = false)
@@ -29,8 +29,7 @@ public class Member {
     private String email;
 
     @OneToMany(mappedBy = "member")
-
-    private List<Board> board = new ArrayList<>();
+    private List<Board> board;
 
     @Builder
     public Member(String name, String password, String email) {
