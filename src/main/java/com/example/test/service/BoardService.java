@@ -41,7 +41,9 @@ public class BoardService {
     }
     @Transactional(readOnly = true)
     public BoardResponseDto searchById(Long board_id) {
-        Board board = boardRepository.findById(board_id).orElseThrow(() -> new NotFoundException(ErrorCode.NOT_EXIST_POST, ErrorCode.NOT_EXIST_POST.getMessage()));
+        Board board = boardRepository.findById(board_id)
+                .orElseThrow(()
+                        -> new NotFoundException(ErrorCode.NOT_EXIST_POST, ErrorCode.NOT_EXIST_POST.getMessage()));
         return new BoardResponseDto(board);
     }
     @Transactional(readOnly = true)
