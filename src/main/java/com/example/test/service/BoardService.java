@@ -10,6 +10,7 @@ import com.example.test.error.exception.NotFoundException;
 import com.example.test.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,12 +60,16 @@ public class BoardService {
         boardRepository.delete(board);
 
     }
-////페이지네이션
-//    @Transactional(readOnly = true)
-//    public Page<BoardListResponseDto> searchAllDescPaged(PageRequest pageRequest) {
-//        Page<Board> boardPage = boardRepository.findAll(pageRequest);
-//        return boardPage.map(BoardListResponseDto::new);
-//}
+//페이지네이션
+    @Transactional(readOnly = true)
+    public Page<BoardListResponseDto> searchAllDescPaged(PageRequest pageRequest) {
+        Page<Board> boardPage = boardRepository.findAll(pageRequest);
+        return new PageImpl<>(boardPage
+                .getContent().stream()
+                .map(BoardListResponseDto::new)
+                .collect(Collectors.toList()), pageRequest, boardPage
+                .getTotalElements());
+}
 
 
 

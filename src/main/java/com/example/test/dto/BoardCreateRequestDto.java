@@ -2,7 +2,6 @@ package com.example.test.dto;
 
 import com.example.test.entity.Board;
 import com.example.test.entity.Member;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

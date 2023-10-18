@@ -43,16 +43,13 @@ public class BoardController {
 
 
 
-//    //페이지네이션
-//    @GetMapping("/paged")
-//    public List<BoardListResponseDto> searchAllDescPaged(@RequestParam(defaultValue = "0") int page,
-//                                                         @RequestParam(defaultValue = "10") int size) {
-//        PageRequest pageRequest = PageRequest.of(page, size);
-//        Page<BoardListResponseDto> boardPage = boardService.searchAllDescPaged(pageRequest);
-//        return boardPage.getContent().stream()
-//                .map(BoardListResponseDto::new)
-//                .collect(Collectors.toList());
-//    }
+    //페이지네이션
+    @GetMapping("/paged")
+    public Page<BoardListResponseDto> searchAllDescPaged(@RequestParam(defaultValue = "0") int page,
+                                                         @RequestParam(defaultValue = "10") int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return boardService.searchAllDescPaged(pageRequest);
+    }
 
 
 }
