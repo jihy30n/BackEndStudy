@@ -1,18 +1,19 @@
 package com.example.test.dto;
 
 import com.example.test.entity.Board;
+import lombok.Getter;
 
+@Getter
 public class BoardResponseDto {
 
     private Long id;
-    private String member;
+    private Long member;
     private String title;
     private String content;
-
-    public BoardResponseDto(Board entity){
-        this.id = entity.getId();
-        this.member = entity.getMember().getName();
-        this.title = entity.getTitle();
-        this.content = entity.getContent();
+    public BoardResponseDto(Board board){
+        this.id = board.getId();
+        this.member = board.getMember().getId();
+        this.title = board.getTitle();
+        this.content = board.getContent();
     }
 }

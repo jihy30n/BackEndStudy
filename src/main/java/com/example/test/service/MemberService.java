@@ -15,6 +15,7 @@ public class MemberService {
     public Long create(MemberCreateRequestDto requestDto) {
 
         return memberRepository.save(requestDto.toEntity()).getId();
+
     }
 
 

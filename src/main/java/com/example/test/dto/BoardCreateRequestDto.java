@@ -8,22 +8,21 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class BoardCreateRequestDto {
-    private Member member;
+    private Long member_id;
     private String title;
     private String content;
 
 
-    public BoardCreateRequestDto(Member member, String title, String content) {
-        this.member = member;
+    public BoardCreateRequestDto(Long member_id, String title, String content) {
+        this.member_id = member_id;
         this.title = title;
         this.content = content;
     }
-
-    public Board toEntity() {
+    public Board toEntity(Member member){
         return Board.builder()
                 .member(member)
-                .title(title)
                 .content(content)
+                .title(title)
                 .build();
     }
 }
