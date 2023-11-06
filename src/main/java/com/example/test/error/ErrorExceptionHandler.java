@@ -62,4 +62,14 @@ public class ErrorExceptionHandler{
                         .build());
     }
 
+    @ExceptionHandler({JwtExpiredException.class})
+    public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final JwtExpiredException e) {
+        return ResponseEntity
+                .status(e.getErrorCode().getStatus())
+                .body(ErrorEntity.builder()
+                        .errorCode(e.getErrorCode().getCode())
+                        .errorMessage(e.getErrorCode().getMessage())
+                        .build());
+    }
+
 }

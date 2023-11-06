@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "member")
-public class Member {
+public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +28,12 @@ public class Member {
     private String email;
 
     @OneToMany(mappedBy = "member")
-    private List<Board> board;
+    private List<BoardEntity> boardEntity;
+
+
 
     @Builder
-    public Member(String name, String password, String email) {
+    public MemberEntity(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;

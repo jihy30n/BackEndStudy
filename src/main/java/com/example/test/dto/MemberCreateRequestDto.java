@@ -1,6 +1,6 @@
 package com.example.test.dto;
 
-import com.example.test.entity.Member;
+import com.example.test.entity.MemberEntity;
 
 public class MemberCreateRequestDto {
 
@@ -14,8 +14,8 @@ public class MemberCreateRequestDto {
         this.password = password;
     }
 
-    public Member toEntity(){
-        return Member.builder()
+    public MemberEntity toEntity(){
+        return MemberEntity.builder()
                 .name(name)
                 .email(email)
                 .password(password)

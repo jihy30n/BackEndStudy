@@ -1,7 +1,7 @@
 package com.example.test.dto;
 
-import com.example.test.entity.Board;
-import com.example.test.entity.Member;
+import com.example.test.entity.BoardEntity;
+import com.example.test.entity.MemberEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,8 +18,8 @@ public class BoardCreateRequestDto {
         this.title = title;
         this.content = content;
     }
-    public Board toEntity(Member member){
-        return Board.builder()
+    public BoardEntity toEntity(MemberEntity member){
+        return BoardEntity.builder()
                 .member(member)
                 .content(content)
                 .title(title)

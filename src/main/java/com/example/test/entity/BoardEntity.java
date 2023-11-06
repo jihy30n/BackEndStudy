@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @AllArgsConstructor
-public class Board {
+public class BoardEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Board {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "member_id")
-    private Member member;
+    private MemberEntity member;
 
     @Column(nullable = false)
     private String title;
@@ -30,7 +30,7 @@ public class Board {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public Board(Member member, String title, String content) {
+    public BoardEntity(MemberEntity member, String title, String content) {
         this.member = member;
         this.title = title;
         this.content = content;

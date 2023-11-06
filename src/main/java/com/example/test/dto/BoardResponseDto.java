@@ -1,6 +1,6 @@
 package com.example.test.dto;
 
-import com.example.test.entity.Board;
+import com.example.test.entity.BoardEntity;
 import lombok.Getter;
 
 @Getter
@@ -10,10 +10,10 @@ public class BoardResponseDto {
     private Long member;
     private String title;
     private String content;
-    public BoardResponseDto(Board board){
-        this.id = board.getId();
-        this.member = board.getMember().getId();
-        this.title = board.getTitle();
-        this.content = board.getContent();
+    public BoardResponseDto(BoardEntity boardEntity){
+        this.id = boardEntity.getId();
+        this.member = boardEntity.getMember().getId();
+        this.title = boardEntity.getTitle();
+        this.content = boardEntity.getContent();
     }
 }

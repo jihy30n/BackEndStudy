@@ -1,15 +1,12 @@
 package com.example.test.repository;
 
-import com.example.test.entity.Board;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.example.test.entity.BoardEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
-    List<Board> findAllByOrderByIdDesc();
+public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
+    List<BoardEntity> findAllByOrderByIdDesc();
 
 
 }
