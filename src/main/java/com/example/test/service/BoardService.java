@@ -28,7 +28,7 @@ public class BoardService {
     @Transactional
     public Long create(BoardCreateRequestDto requestDto) {
        MemberEntity member = memberRepository.findById(requestDto.getMember_id())
-               .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_EXIST_USER, ErrorCode.NOT_EXIST_USER.getMessage()));
+               .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_EXIST_USER.getMessage(), ErrorCode.NOT_EXIST_USER));
        BoardEntity boardEntity = requestDto.toEntity(member);
        boardRepository.save(boardEntity);
        return boardEntity.getId();
@@ -36,7 +36,7 @@ public class BoardService {
     @Transactional
     public Long update(Long id, BoardUpdateRequestDto requestDto) {
         BoardEntity boardEntity = boardRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_EXIST_POST, ErrorCode.NOT_EXIST_POST.getMessage()));
+                .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_EXIST_POST.getMessage(), ErrorCode.NOT_EXIST_POST));
         boardEntity.update(requestDto.getTitle(),
                 requestDto.getContent());
         return id;
@@ -45,7 +45,7 @@ public class BoardService {
     public BoardResponseDto searchById(Long board_id) {
         BoardEntity boardEntity = boardRepository.findById(board_id)
                 .orElseThrow(()
-                        -> new NotFoundException(ErrorCode.NOT_EXIST_POST, ErrorCode.NOT_EXIST_POST.getMessage()));
+                        -> new NotFoundException(ErrorCode.NOT_EXIST_POST.getMessage(), ErrorCode.NOT_EXIST_POST));
         return new BoardResponseDto(boardEntity);
     }
     @Transactional(readOnly = true)
@@ -58,7 +58,7 @@ public class BoardService {
     public void delete(Long id) {
         BoardEntity boardEntity = boardRepository.findById(id)
                 .orElseThrow(()->
-                new NotFoundException(ErrorCode.NOT_EXIST_POST, ErrorCode.NOT_EXIST_POST.getMessage()));
+                new NotFoundException(ErrorCode.NOT_EXIST_POST.getMessage(), ErrorCode.NOT_EXIST_POST));
         boardRepository.delete(boardEntity);
     }
 //페이지네이션

@@ -1,5 +1,6 @@
 package com.example.test.entity;
 
+import com.example.test.enums.MemberRole;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,10 +28,12 @@ public class MemberEntity {
     @Column(length = 50, nullable = false)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private MemberRole memberRole;
+
     @OneToMany(mappedBy = "member")
     private List<BoardEntity> boardEntity;
-
-
 
     @Builder
     public MemberEntity(String name, String password, String email) {
@@ -38,6 +41,5 @@ public class MemberEntity {
         this.password = password;
         this.email = email;
     }
-
 
 }

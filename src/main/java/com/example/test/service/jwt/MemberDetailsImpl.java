@@ -16,7 +16,6 @@ public class MemberDetailsImpl implements UserDetails {
     private final MemberEntity memberEntity;
     @Override
     @Transactional
-//    사용자 권한 처리
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<String> memberRole = new ArrayList<>();
         memberRole.add(memberEntity.getMemberRole().toString());
@@ -36,7 +35,7 @@ public class MemberDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return memberEntity.getMembername();
+        return memberEntity.getName();
     }
 
     @Override
