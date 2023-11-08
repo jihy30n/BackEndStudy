@@ -4,11 +4,9 @@ import com.example.test.error.ErrorCode;
 import com.example.test.error.exception.NotFoundException;
 import com.example.test.repository.MemberRepository;
 import com.example.test.service.jwt.CustomMemberDetailService;
-import com.example.test.error.exception.JwtExpiredException;
+import com.example.test.service.jwt.JwtExpiredException;
 
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,8 +18,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-
-import java.security.Key;
 import java.util.Date;
 
 @Component
@@ -83,7 +79,7 @@ public class JwtProvider {
         } catch (MalformedJwtException e) {
             throw new MalformedJwtException("Invalid JWT token", e);
         } catch (ExpiredJwtException e) {
-            throw new JwtExpiredException("JWT token has expired", e);
+            throw new JwtExpiredException("JWT token has expired");
         } catch (UnsupportedJwtException e) {
             throw new UnsupportedJwtException("JWT token is unsupported", e);
         } catch (IllegalArgumentException e) {

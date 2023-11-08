@@ -1,6 +1,7 @@
 package com.example.test.error;
 
 import com.example.test.error.exception.*;
+import com.example.test.service.jwt.JwtExpiredException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
