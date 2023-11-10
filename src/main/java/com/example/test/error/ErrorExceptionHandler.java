@@ -1,12 +1,13 @@
 package com.example.test.error;
 
 import com.example.test.error.exception.*;
-import com.example.test.service.jwt.JwtExpiredException;
-import jakarta.servlet.http.HttpServletRequest;
+import com.example.test.jwt.JwtExpiredException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RequiredArgsConstructor
 @RestControllerAdvice

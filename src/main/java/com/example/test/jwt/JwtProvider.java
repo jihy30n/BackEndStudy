@@ -4,20 +4,19 @@ import com.example.test.error.ErrorCode;
 import com.example.test.error.exception.NotFoundException;
 import com.example.test.repository.MemberRepository;
 import com.example.test.service.jwt.CustomMemberDetailService;
-import com.example.test.service.jwt.JwtExpiredException;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 @Component
@@ -26,7 +25,7 @@ import java.util.Date;
 public class JwtProvider {
     private final MemberRepository memberRepository;
     private final CustomMemberDetailService customMemberDetailService;
-    @Value("${jwt.secretKey}")
+    @Value("${jwt.secret}")
     private String secretKey;
 
     @Value("${jwt.accessExpiration}")
@@ -44,7 +43,7 @@ public class JwtProvider {
 
 
     public String createToken(String email, long tokenTime){
-        MemberEntity memberEntity = MemberRepository.findByEmail(email)
+        MemberEntity memberEntity = memberRepository.findByEmail(email)
                 .orElseThrow(()->{throw new UsernameNotFoundException("찾을 수 없음");});
         Claims claims = Jwts.claims().setSubject(email);
         claims.put("roles",memberEntity.getMemberRole().toString());
@@ -90,10 +89,10 @@ public class JwtProvider {
     }
 
     public void setHeaderAT(HttpServletResponse response, String AT) {
-        response.setHeader("Authorization","Bearer "+AT);
+        response.setHeader("Authorization","Bearer " + AT);
     }
     public void setHeaderRT(HttpServletResponse response, String RT) {
-        response.setHeader("refreshToken","Bearer "+RT);
+        response.setHeader("refreshToken","Bearer " + RT);
     }
 
     public UsernamePasswordAuthenticationToken getAuthentication(String token) {
@@ -107,6 +106,6 @@ public class JwtProvider {
     }
     public MemberEntity findByUserOnToken(HttpServletRequest request) {
         String memberEmail = this.getUserEmail(this.resolveAT(request));
-        return MemberRepository.findByEmail(memberEmail).orElseThrow(()-> new NotFoundException(ErrorCode.NOT_FOUND_EXCEPTION.getMessage(),ErrorCode.NOT_FOUND_EXCEPTION));
+        return memberRepository.findByEmail(memberEmail).orElseThrow(()-> new NotFoundException(ErrorCode.NOT_FOUND_EXCEPTION.getMessage(),ErrorCode.NOT_FOUND_EXCEPTION));
     }
 }

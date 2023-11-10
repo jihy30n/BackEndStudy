@@ -22,10 +22,10 @@ public class SecurityConfig {
 
     private final JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
+    //필터 변경 - api 검사 언놈통과시키고, 토큰 안보냈을때 에러처리, 둘다 오지 않았을떄: 클라이언트입장에서
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.httpBasic().disable()
-                .csrf().disable()
+        httpSecurity.csrf().disable()
                 .cors()
                 .and()
                 .headers().frameOptions().disable()
@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/users/").permitAll()
+                .antMatchers(HttpMethod.GET,"/member/").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .addFilterBefore(jwtAuthenticationTokenFilter, BasicAuthenticationFilter.class)
