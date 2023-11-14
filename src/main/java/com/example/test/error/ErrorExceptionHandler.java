@@ -64,8 +64,8 @@ public class ErrorExceptionHandler{
                         .build());
     }
 
-    @ExceptionHandler({JwtExpiredException.class})
-    public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final JwtExpiredException e) {
+    @ExceptionHandler({InvalidTokenException.class})
+    public ResponseEntity<ErrorEntity> exceptionHandler(HttpServletRequest request, final InvalidTokenException e) {
         return ResponseEntity
                 .status(e.getErrorCode().getStatus())
                 .body(ErrorEntity.builder()
