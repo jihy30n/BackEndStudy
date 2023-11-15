@@ -1,11 +1,11 @@
 package com.example.test.entity;
 
 import com.example.test.enums.MemberRole;
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
