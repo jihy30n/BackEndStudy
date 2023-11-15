@@ -18,7 +18,13 @@ public enum ErrorCode {
 
     NOT_EXIST_POST(HttpStatus.NOT_FOUND, "404", "404 Not found: 존재하지 않는 게시글입니다."),
     INTERNAL_SERVER_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "500", "500: 예기치 못한 오류가 발생했습니다."),
-    JWT_EXPIRED_EXCEPTION(HttpStatus.UNAUTHORIZED, "401_Invalid", "JWT 토큰이 만료됐습니다.");
+    JWT_EXPIRED_EXCEPTION(HttpStatus.UNAUTHORIZED, "401_Invalid", "JWT 토큰이 만료됐습니다."),
+    EXPIRED_AT(HttpStatus.UNAUTHORIZED,"101", "access token has expired. Please try with token refresh"),
+    INVALID_TOKEN(HttpStatus.UNAUTHORIZED,"103", "Invalid JWT token."),
+    EMPTY_TOKEN(HttpStatus.UNAUTHORIZED,"104", "Token cannot has been null"),
+    JWT_COMPLEX_ERROR(HttpStatus.UNAUTHORIZED,"4006", "JWT Complex error, Please call BackEnd"),
+    ALREADY_EXISTS(HttpStatus.FORBIDDEN, "110","대기시간");
+
 
     private final HttpStatus status;
     private final String code;
